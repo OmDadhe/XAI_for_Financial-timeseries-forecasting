@@ -1,0 +1,1 @@
+Real stock data cannot be freely redistributed. This project synthesizes a realistic Apple-like dataset using Geometric Brownian Motion (GBM) — the foundational model of the Black-Scholes framework and the standard stochastic process in quantitative finance.
