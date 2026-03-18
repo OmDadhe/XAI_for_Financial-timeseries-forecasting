@@ -1,0 +1,44 @@
+=================================================================
+  FINAL PROJECT SUMMARY
+  Developing XAI for Financial Time Series Forecasting
+  Apple (AAPL) Synthesized Stock Data
+=================================================================
+
+PROJECT OVERVIEW:
+  This project develops an explainable AI (XAI) framework for
+  financial time series forecasting using synthesized AAPL-like
+  stock data generated via Geometric Brownian Motion (GBM).
+
+METHODOLOGY:
+  - Data Synthesis   : GBM with mu=0.25, sigma=0.30, S0=150
+  - Features         : 12 — OHLCV + 7 technical indicators
+  - Window           : 60-day rolling sequences
+  - Models trained   : LSTM+Attention, GRU, Bi-LSTM, XGBoost
+  - XAI              : SHAP GradientExplainer + TreeExplainer
+
+RESULTS:
+                      RMSE       MAE  MAPE(%)      R²  Dir.Acc(%)
+Model                                                            
+LSTM + Attention  440.4633  313.2473   6.2972  0.6046       46.68
+GRU               274.2030  214.4727   4.4484  0.8468       44.47
+Bi-LSTM           219.5152  177.8191   3.8452  0.9018       46.24
+XGBoost           814.7012  566.9433  11.0168 -0.3527       49.12
+
+  Best performing model : Bi-LSTM
+  RMSE                  : 219.5152
+  R²                    : 0.9018
+
+TOP XAI INSIGHTS (LSTM+Attention):
+  1. High           — Mean |SHAP| = 0.002296
+  2. Close          — Mean |SHAP| = 0.001977
+  3. Open           — Mean |SHAP| = 0.001744
+  4. ATR_14         — Mean |SHAP| = 0.001652
+  5. EMA_20         — Mean |SHAP| = 0.001278
+
+  Most influential time step: 15 days ago (index 45)
+
+OUTPUTS SAVED:
+  Visualizations : /content/Capstone_Project/visualizations/
+  Reports        : /content/Capstone_Project/reports/
+  Data           : /content/Capstone_Project/data/
+=================================================================

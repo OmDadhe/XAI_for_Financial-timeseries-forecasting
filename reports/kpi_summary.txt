@@ -1,0 +1,34 @@
+=================================================================
+  KEY PERFORMANCE INDICATORS — XAI Financial Forecasting
+=================================================================
+  Best model           : Bi-LSTM
+  Best RMSE            : 219.5152
+  Best MAE             : 177.8191
+  Best MAPE            : 3.8452%
+  Best R²              : 0.9018
+
+  Dataset KPIs:
+  Total synthesized days : 2321
+  Date range             : 2015-10-08 to 2024-08-29
+  Total return (GBM)     : 3570.98%
+  Avg annualised vol     : 2946.42%
+  Approx. Sharpe ratio   : 1.467
+  Features used          : 12 (Open, High, Low, Close, Volume, RSI_14, MACD, BB_Width, EMA_20, ATR_14, OBV, Stoch_K)
+  Window size            : 60 days
+  Train/Test split       : 80% / 20%
+
+  All Models:
+                      RMSE       MAE  MAPE(%)      R²  Dir.Acc(%)
+Model                                                            
+LSTM + Attention  440.4633  313.2473   6.2972  0.6046       46.68
+GRU               274.2030  214.4727   4.4484  0.8468       44.47
+Bi-LSTM           219.5152  177.8191   3.8452  0.9018       46.24
+XGBoost           814.7012  566.9433  11.0168 -0.3527       49.12
+
+  Top SHAP Features (LSTM+Attention):
+    1. High           mean|SHAP|=0.002296
+    2. Close          mean|SHAP|=0.001977
+    3. Open           mean|SHAP|=0.001744
+    4. ATR_14         mean|SHAP|=0.001652
+    5. EMA_20         mean|SHAP|=0.001278
+=================================================================
