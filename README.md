@@ -391,6 +391,7 @@ Six-panel Plotly dashboard: Close + MAs, Volume, Daily Returns, Cumulative Retur
 > *Story: The executive summary — all key results, predictions, and explanations in one scrollable view.*
 Four-row layout: KPI indicator cards (best RMSE, R², MAPE), all-model prediction overlay, attention weights + SHAP feature bar, SHAP model comparison + full metrics table. Designed to be self-contained — a stakeholder can open this single HTML file and understand the entire project without running a line of code.
 
+
 ---
 
 ## Results
