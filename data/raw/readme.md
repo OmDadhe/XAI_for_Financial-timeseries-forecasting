@@ -1,0 +1,1 @@
+OHLCV columns are derived per day from individual intraday GBM paths. Volume spikes are injected on days where price moves exceed 2.5%, matching empirically observed volume-volatility correlation. Realistic 1% NaN noise and 5 duplicate rows are deliberately injected to simulate raw data quality issues — resolved in the cleaning stage.
