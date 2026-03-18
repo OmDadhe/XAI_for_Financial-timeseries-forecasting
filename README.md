@@ -551,6 +551,5 @@ B.Tech Computer Science & Engineering · GITAM University, Hyderabad
 
 *If this project was useful to you, please consider starring ⭐ the repository.*
 
-**Built as a capstone project for the B.Tech CSE program, GITAM University · 2025**
 
 </div>
