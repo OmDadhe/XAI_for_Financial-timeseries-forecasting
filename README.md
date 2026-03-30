@@ -258,6 +258,7 @@ SHAP (Lundberg & Lee, 2017) is grounded in **cooperative game theory** — it co
 ## Visualizations & Data Stories
 
 Every visualization in this project is designed to tell a specific analytical story, not simply display data. Below is the complete catalogue.
+Streamlit dashboard: https://xaiforfinancial-timeseries-forecasting.streamlit.app/
 
 ---
 
