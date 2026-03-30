@@ -18,7 +18,7 @@ from PIL import Image
 # ──────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="XAI · Financial Forecasting",
-    page_icon="📈",
+    page_icon="⚛",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -101,14 +101,14 @@ html, body, [class*="css"] { font-family: 'IBM Plex Sans', sans-serif; }
 # SIDEBAR
 # ──────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## 📈 XAI · FinTS")
+    st.markdown("##  XAI · FinTS")
     st.markdown("---")
     st.markdown("**Developing Explainable AI**  \nfor Financial Time Series Forecasting")
     st.markdown("---")
     page = st.radio(
         "Navigate",
-        ["🏠 Overview", "📊 EDA & Data Story", "🧠 Model Results",
-         "🔬 SHAP Explainability", "🖥️ Final Dashboard", "📄 Reports"],
+        [" Overview", " EDA & Data Story", " Model Results",
+         " SHAP Explainability", " Final Dashboard", " Reports"],
         label_visibility="collapsed",
     )
     st.markdown("---")
@@ -126,9 +126,9 @@ with st.sidebar:
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE: OVERVIEW
 # ══════════════════════════════════════════════════════════════════════════════
-if page == "🏠 Overview":
+if page == " Overview":
 
-    st.markdown("# 📈 Developing Explainable AI\n### for Financial Time Series Forecasting")
+    st.markdown("#  Developing Explainable AI\n### for Financial Time Series Forecasting")
     st.markdown(
         "An end-to-end XAI framework on 10 years of synthesized AAPL-like stock data — "
         "multi-model benchmarking, SHAP-driven explainability, and temporal attribution at the feature level."
@@ -165,13 +165,13 @@ if page == "🏠 Overview":
 
     # ── 2-tuple steps — FIXED (was incorrectly unpacked as 3-tuple before) ───
     steps = [
-        ("🧪", "Data Synthesis",      "GBM · μ=0.25 · σ=0.30 · 2,520 days"),
-        ("🧹", "Cleaning & EDA",       "NaN interp · OHLC validation · 9 EDA charts"),
-        ("⚙️", "Feature Engineering",  "12 features · RSI · MACD · ATR · OBV · Stoch"),
-        ("🔢", "Sequences",            "60-day rolling windows · MinMaxScaler"),
-        ("🧠", "Model Training",       "LSTM+Attn · GRU · Bi-LSTM · XGBoost"),
-        ("🔬", "SHAP XAI",            "GradientExplainer · TreeSHAP · Heatmaps"),
-        ("🖥️", "Dashboard",            "Plotly HTML · Streamlit · Auto-reports"),
+        ( "Data Synthesis",      "GBM · μ=0.25 · σ=0.30 · 2,520 days"),
+        ( "Cleaning & EDA",       "NaN interp · OHLC validation · 9 EDA charts"),
+        ( "Feature Engineering",  "12 features · RSI · MACD · ATR · OBV · Stoch"),
+        ( "Sequences",            "60-day rolling windows · MinMaxScaler"),
+        ( "Model Training",       "LSTM+Attn · GRU · Bi-LSTM · XGBoost"),
+        ( "SHAP XAI",            "GradientExplainer · TreeSHAP · Heatmaps"),
+        ( "Dashboard",            "Plotly HTML · Streamlit · Auto-reports"),
     ]
 
     cols = st.columns(len(steps))
@@ -191,7 +191,7 @@ if page == "🏠 Overview":
         ("Open",     "Price",      "Gap risk from prior close"),
         ("High",     "Price",      "Intraday resistance level"),
         ("Low",      "Price",      "Intraday support level"),
-        ("Close",    "Price",      "Primary prediction target ⭐"),
+        ("Close",    "Price",      "Primary prediction target "),
         ("Volume",   "Volume",     "Conviction behind price moves"),
         ("RSI-14",   "Momentum",   "Overbought >70 / Oversold <30"),
         ("MACD",     "Trend",      "Momentum convergence/divergence"),
@@ -215,15 +215,15 @@ if page == "🏠 Overview":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE: EDA & DATA STORY
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "📊 EDA & Data Story":
+elif page == " EDA & Data Story":
 
-    st.markdown("# 📊 EDA & Data Story")
+    st.markdown("#  EDA & Data Story")
     st.markdown("Every visualization tells a specific analytical story. Expand each section to read it.")
     st.markdown("---")
 
     df_proc = load_csv(DATA_PROC)
     if not df_proc.empty and "Close" in df_proc.columns:
-        st.markdown('<div class="section-header">📈 Synthesized AAPL Close Price (Live)</div>',
+        st.markdown('<div class="section-header"> Synthesized AAPL Close Price (Live)</div>',
                     unsafe_allow_html=True)
         fig = go.Figure()
         fig.add_trace(go.Scatter(
@@ -247,50 +247,50 @@ elif page == "📊 EDA & Data Story":
         st.markdown("---")
 
     eda_sections = [
-        ("🧹 Data Cleaning", "cleaning_overview.png", "cleaning",
+        (" Data Cleaning", "cleaning_overview.png", "cleaning",
          "How bad was the raw data, and what did cleaning fix?",
          "Four-panel view: NaN heatmap (red = missing), raw vs cleaned close overlay, volume "
          "distribution before/after interpolation, and daily OHLC range post-cleaning. Missing values "
          "are randomly scattered — confirming noise artifacts, not structural gaps — justifying linear interpolation."),
-        ("📦 Univariate Distributions", "univariate_distributions.png", "eda",
+        (" Univariate Distributions", "univariate_distributions.png", "eda",
          "What does the distribution of each OHLCV variable reveal about the data-generating process?",
          "Six histograms with mean/median overlays. Close and Open show right-skewed multimodal "
          "distributions — characteristic of a trending GBM asset. Daily returns approximate a normal "
          "distribution with slight leptokurtosis (fat tails), matching real equity markets."),
-        ("📦 Boxplots & Skewness", "boxplot_skewness.png", "eda",
+        (" Boxplots & Skewness", "boxplot_skewness.png", "eda",
          "Which features are most asymmetric, and does that matter for our scaler choice?",
          "OHLC boxplots reveal High has the widest range. The skewness/kurtosis bar chart confirms "
          "Volume is the most non-normal feature — justifying MinMaxScaler over StandardScaler."),
-        ("📈 Time Series Analysis", "time_series_analysis.png", "eda",
+        (" Time Series Analysis", "time_series_analysis.png", "eda",
          "What are the structural patterns in price, volume, returns, and cumulative performance?",
          "Four-panel time series. Weekly OHLC bars show GBM drift clearly — price trends upward with "
          "increasing variance. Volume spikes coincide with high-return days. Cumulative return exceeds 800%."),
-        ("📅 Seasonality Analysis", "seasonality_analysis.png", "eda",
+        (" Seasonality Analysis", "seasonality_analysis.png", "eda",
          "Are there calendar patterns in returns that a model should be aware of?",
          "Annual close shows consistent upward trend. Monthly returns reveal slight Q4 positive bias "
          "(October–November), consistent with the Santa Claus rally. Friday slightly underperforms — "
          "a known pattern in real market microstructure."),
-        ("📉 Rolling Stats & Volatility", "rolling_stats_volatility.png", "eda",
+        (" Rolling Stats & Volatility", "rolling_stats_volatility.png", "eda",
          "Where are the volatility regimes, and do MA crossovers signal trend changes?",
          "MA-20, MA-50, and MA-200 overlaid on price reveal classic crossover points. Bollinger Bands "
          "(±2σ) capture expansion during high-volatility regimes. The 30-day annualised volatility "
          "panel exposes GARCH-like clustering — quiet periods followed by explosive moves."),
-        ("🔁 Autocorrelation", "autocorrelation.png", "eda",
+        (" Autocorrelation", "autocorrelation.png", "eda",
          "Are returns serially correlated? Does volatility cluster?",
          "Returns ACF shows no significant autocorrelation beyond lag 1 (weak-form efficiency). "
          "Squared returns ACF shows strong persistence across 40 lags — direct evidence of volatility "
          "clustering, motivating ATR and BB Width as features."),
-        ("🔗 Correlation & Bivariate", "correlation_bivariate.png", "eda",
+        (" Correlation & Bivariate", "correlation_bivariate.png", "eda",
          "Which features are multicollinear, and which add genuinely independent information?",
          "Full correlation heatmap: Open, High, Low, Close highly correlated (r>0.99). Volume and "
          "Daily Return show near-zero correlation with price levels. Scatter confirms volume-volatility "
          "relationship during extreme moves."),
-        ("⚙️ Technical Indicators", "technical_indicators.png", "eda",
+        (" Technical Indicators", "technical_indicators.png", "eda",
          "Do the engineered features capture distinct market regimes?",
          "Eight-panel subplot. RSI crosses 70/30 during bull/bear runs as designed. MACD sign changes "
          "mark trend reversals. BB Width spikes precede large moves — confirming it as a volatility "
          "anticipation indicator."),
-        ("🧮 Feature Correlation (All 12)", "feature_correlation_full.png", "eda",
+        (" Feature Correlation (All 12)", "feature_correlation_full.png", "eda",
          "Is there redundancy in the 12-feature set?",
          "EMA-20 is highly correlated with Close (r≈0.97). ATR and BB Width moderately correlated "
          "(r≈0.6). RSI, MACD, OBV, Stoch-%K show low cross-correlation — confirming genuine "
@@ -309,9 +309,9 @@ elif page == "📊 EDA & Data Story":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE: MODEL RESULTS
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "🧠 Model Results":
+elif page == " Model Results":
 
-    st.markdown("# 🧠 Model Results")
+    st.markdown("#  Model Results")
     st.markdown("---")
 
     st.markdown('<div class="section-header">Model Architectures</div>', unsafe_allow_html=True)
@@ -325,27 +325,27 @@ elif page == "🧠 Model Results":
     st.markdown("---")
 
     model_sections = [
-        ("📉 Train / Test Split", "train_test_split.png", "models",
+        (" Train / Test Split", "train_test_split.png", "models",
          "Where does the model's knowledge end and its generalization begin?",
          "Time-ordered train/test boundary on the full price series. Blue = train; orange = test. "
          "Ensures true out-of-sample evaluation with no look-ahead bias."),
-        ("📉 LSTM Training Curves", "lstm_training_curves.png", "models",
+        (" LSTM Training Curves", "lstm_training_curves.png", "models",
          "Did the LSTM converge properly, or did it overfit?",
          "Full history and last-30-epoch zoom. Narrow train/val gap confirms no overfitting. "
          "EarlyStopping restores best weights. ReduceLROnPlateau drops visible as loss curve kinks."),
-        ("📊 Metrics Comparison", "metrics_comparison.png", "models",
+        (" Metrics Comparison", "metrics_comparison.png", "models",
          "Which model is best, and by how much?",
          "Three bar charts: RMSE, MAPE(%), R². Value annotations above each bar. Best model is "
          "immediately visually apparent."),
-        ("📈 All Model Predictions", "all_model_predictions.png", "models",
+        (" All Model Predictions", "all_model_predictions.png", "models",
          "Do the models track actual price movement, or do they lag?",
          "2×2 grid, one panel per model. Actual vs predicted with shaded ±|residual| error band. "
          "RMSE and R² annotated in the title."),
-        ("📉 Prediction Residuals", "prediction_errors.png", "models",
+        (" Prediction Residuals", "prediction_errors.png", "models",
          "Are prediction errors random (good) or systematic (bad)?",
          "Residual bar charts per model. Random scatter around zero = well-calibrated. Systematic "
          "positive bias at market tops would indicate slow momentum tracking."),
-        ("🔍 Attention Matrix", "attention_matrix.png", "models",
+        (" Attention Matrix", "attention_matrix.png", "models",
          "Which days in the 60-day window does the LSTM actually look at?",
          "Mean attention weight bar (60 bars, one per day) + heatmap across 20 test samples. "
          "Model-native interpretability before SHAP. Peak at recent days = momentum follower."),
@@ -354,7 +354,7 @@ elif page == "🧠 Model Results":
     for title, fname, subfolder, story_q, story_a in model_sections:
         with st.expander(title, expanded=False):
             st.markdown(
-                f'<div class="story-box">📖 <strong>Story:</strong> {story_q}<br><br>{story_a}</div>',
+                f'<div class="story-box"> <strong>Story:</strong> {story_q}<br><br>{story_a}</div>',
                 unsafe_allow_html=True,
             )
             show_img(os.path.join(VIZ, subfolder, fname))
@@ -363,9 +363,9 @@ elif page == "🧠 Model Results":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE: SHAP EXPLAINABILITY
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "🔬 SHAP Explainability":
+elif page == " SHAP Explainability":
 
-    st.markdown("# 🔬 SHAP Explainability")
+    st.markdown("#  SHAP Explainability")
     st.markdown("""
 SHAP (SHapley Additive exPlanations) is grounded in cooperative game theory.
 It computes each feature's **marginal contribution** to a prediction by averaging over all possible
@@ -379,43 +379,43 @@ feature subsets — satisfying Efficiency, Symmetry, and Dummy properties that s
     st.markdown("---")
 
     shap_sections = [
-        ("🌡️ Beeswarm Summary", "shap_summary_beeswarm.png",
+        (" Beeswarm Summary", "shap_summary_beeswarm.png",
          "Which features are most impactful, and do high values push predictions up or down?",
          "Each dot = one test sample, colored by feature value (red=high, blue=low). Features ranked "
          "by mean |SHAP|. Clean gradient = monotonic relationship. Mixed colors = non-linear impact."),
-        ("📊 Feature Importance Bar", "shap_bar_importance.png",
+        (" Feature Importance Bar", "shap_bar_importance.png",
          "What is the global feature importance leaderboard?",
          "Horizontal bar of mean |SHAP| per feature, descending. Definitive answer to: which three "
          "features does the model rely on most?"),
-        ("🌊 Waterfall Plot", "shap_waterfall.png",
+        (" Waterfall Plot", "shap_waterfall.png",
          "How does the model arrive at one specific prediction, step by step?",
          "Each feature's contribution shown as a step from base value to final output. "
          "Fully auditable — a regulator can trace exactly why the model predicted $X."),
-        ("⚡ Force Plot", "shap_force_plot.png",
+        (" Force Plot", "shap_force_plot.png",
          "What is the push-pull dynamic between features in a single prediction?",
          "Red = pushing above baseline. Blue = pulling below. Effective for non-technical stakeholders."),
-        ("🔵 Dependence Plots", "shap_dependence.png",
+        (" Dependence Plots", "shap_dependence.png",
          "How does each indicator's value relate to its influence on the prediction?",
          "Three plots: RSI-14, MACD, ATR-14 vs their SHAP values, colored by Volume. "
          "S-shaped curve = threshold effect. Scatter = context-dependent impact."),
-        ("⏱️ Time-Step Importance", "shap_timestep_importance.png",
+        (" Time-Step Importance", "shap_timestep_importance.png",
          "Does the model primarily use recent data or historical context?",
          "Mean |SHAP| aggregated across all features per day in the 60-day window. "
          "Peak near day 59 = momentum follower. Earlier peak = longer-term structural pattern."),
-        ("🌡️ Feature × Time Heatmap — LSTM ⭐", "shap_feature_time_heatmap_lstm.png",
+        (" Feature × Time Heatmap — LSTM ", "shap_feature_time_heatmap_lstm.png",
          "Which feature contributed most, at which specific point in time?",
          "12 rows × 60 columns. Color = mean |SHAP|. Centrepiece XAI visualization. "
          "Horizontal bright band = one feature dominates. Vertical = one historical date influential. "
          "Global max outlined in blue."),
-        ("🌡️ Feature × Time Heatmap — XGBoost", "shap_feature_time_heatmap_xgb.png",
+        (" Feature × Time Heatmap — XGBoost", "shap_feature_time_heatmap_xgb.png",
          "Does XGBoost attend to the same features and time periods as the LSTM?",
          "Same heatmap for exact TreeSHAP. Agreement between both model families = genuine market "
          "signal, not architecture artifact."),
-        ("🌳 XGBoost TreeSHAP Summary", "shap_xgb_summary.png",
+        (" XGBoost TreeSHAP Summary", "shap_xgb_summary.png",
          "What does a tree-based model consider important?",
          "Exact Shapley values (not approximated). Ground-truth SHAP for XGBoost. "
          "Compare with LSTM GradientExplainer ranking."),
-        ("⚖️ LSTM vs XGBoost Comparison", "shap_model_comparison.png",
+        (" LSTM vs XGBoost Comparison", "shap_model_comparison.png",
          "Where do deep learning and gradient boosting agree — and disagree?",
          "Grouped bar chart per feature. Both bars tall = genuine signal. Only one tall = "
          "model-specific inductive bias."),
@@ -424,7 +424,7 @@ feature subsets — satisfying Efficiency, Symmetry, and Dummy properties that s
     for title, fname, story_q, story_a in shap_sections:
         with st.expander(title, expanded=False):
             st.markdown(
-                f'<div class="story-box">📖 <strong>Story:</strong> {story_q}<br><br>{story_a}</div>',
+                f'<div class="story-box"> <strong>Story:</strong> {story_q}<br><br>{story_a}</div>',
                 unsafe_allow_html=True,
             )
             show_img(os.path.join(VIZ, "shap", fname))
@@ -433,13 +433,13 @@ feature subsets — satisfying Efficiency, Symmetry, and Dummy properties that s
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE: FINAL DASHBOARD
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "🖥️ Final Dashboard":
+elif page == " Final Dashboard":
 
-    st.markdown("# 🖥️ Final Dashboard")
+    st.markdown("#  Final Dashboard")
     st.markdown("Interactive Plotly dashboards generated by the notebook and embedded here.")
     st.markdown("---")
 
-    tab1, tab2 = st.tabs(["📊 EDA Dashboard", "📈 Final Model Dashboard"])
+    tab1, tab2 = st.tabs([" EDA Dashboard", " Final Model Dashboard"])
 
     with tab1:
         st.markdown('<div class="section-header">EDA Dashboard</div>', unsafe_allow_html=True)
@@ -463,13 +463,13 @@ elif page == "🖥️ Final Dashboard":
 # ══════════════════════════════════════════════════════════════════════════════
 # PAGE: REPORTS
 # ══════════════════════════════════════════════════════════════════════════════
-elif page == "📄 Reports":
+elif page == " Reports":
 
-    st.markdown("# 📄 Auto-Generated Reports")
+    st.markdown("#  Auto-Generated Reports")
     st.markdown("All reports are written to `reports/` automatically at notebook runtime.")
     st.markdown("---")
 
-    tab1, tab2, tab3 = st.tabs(["📋 Initial Summary", "📊 KPI Summary", "📝 Final Summary"])
+    tab1, tab2, tab3 = st.tabs([" Initial Summary", " KPI Summary", " Final Summary"])
 
     with tab1:
         st.markdown('<div class="section-header">initial_summary.txt</div>', unsafe_allow_html=True)
@@ -489,9 +489,9 @@ elif page == "📄 Reports":
     st.markdown("---")
     st.markdown("**Download Reports**")
     for label, path in [
-        ("📥 initial_summary.txt", RPT_INITIAL),
-        ("📥 kpi_summary.txt",     RPT_KPI),
-        ("📥 final_summary.txt",   RPT_FINAL),
+        (" initial_summary.txt", RPT_INITIAL),
+        (" kpi_summary.txt",     RPT_KPI),
+        (" final_summary.txt",   RPT_FINAL),
     ]:
         if os.path.exists(path):
             with open(path) as f:
